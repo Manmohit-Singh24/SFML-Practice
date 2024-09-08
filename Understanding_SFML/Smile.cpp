@@ -67,9 +67,7 @@ public :
 };
 
 
-
-
-int main()
+int mainRun()
 {
 	sf::RenderWindow window(sf::VideoMode(810, 810), "SFML Practice : Smile");
 	shape sh;
