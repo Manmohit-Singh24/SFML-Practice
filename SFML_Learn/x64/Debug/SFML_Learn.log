@@ -1,7 +1,2 @@
-﻿  GameTile.cpp
-  Map.cpp
-C:\Users\HP\OneDrive\Code\C++\Practice_Games\SFML_Learn\Map.cpp(23,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\OneDrive\Code\C++\Practice_Games\SFML_Learn\Map.cpp(34,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-  Generating Code...
+﻿  main.cpp
   SFML_Learn.vcxproj -> C:\Users\HP\OneDrive\Code\C++\Practice_Games\x64\Debug\SFML_Learn.exe

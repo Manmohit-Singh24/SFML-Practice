@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include<iostream>
+#include <iostream>
 #include "Player.h"
 #include "Bullet.h"
 #include "Map.h"
@@ -17,15 +17,15 @@ bool noKeyPressed() {
 }
 
 int main() {
-
-	Texture bulletTexture;
-	if (!bulletTexture.loadFromFile("./Assets/Bullet/bullet.png")) {
-		std::cout << "Can't Load bullet";
-	}
-
 	Map map("Assets/Map/Tilessheet-mario.png");
 
 	Player player;
+
+	// Bullets are just for learnig , not very well created here 
+	Texture bulletTexture;
+	if (!bulletTexture.loadFromFile("./Assets/Bullet/bullet.png")) {
+		cout << "Can't Load bullet";
+	}
 	vector<Bullet> bullets;
 	Clock bulletT;
 
