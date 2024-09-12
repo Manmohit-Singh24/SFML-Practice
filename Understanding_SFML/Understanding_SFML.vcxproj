@@ -112,6 +112,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\tmxlite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,6 +129,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)tmxlite\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,6 +144,23 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movements.cpp" />
     <ClCompile Include="Smile.cpp" />
+    <ClCompile Include="tmxlite\src\FreeFuncs.cpp" />
+    <ClCompile Include="tmxlite\src\ImageLayer.cpp" />
+    <ClCompile Include="tmxlite\src\LayerGroup.cpp" />
+    <ClCompile Include="tmxlite\src\Map.cpp" />
+    <ClCompile Include="tmxlite\src\miniz.c" />
+    <ClCompile Include="tmxlite\src\Object.cpp" />
+    <ClCompile Include="tmxlite\src\ObjectGroup.cpp" />
+    <ClCompile Include="tmxlite\src\ObjectTypes.cpp" />
+    <ClCompile Include="tmxlite\src\Property.cpp" />
+    <ClCompile Include="tmxlite\src\TileLayer.cpp" />
+    <ClCompile Include="tmxlite\src\Tileset.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tmxlite\src\meson.build" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tmxlite\src\miniz.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
