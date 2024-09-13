@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Player.h"
-#include "Bullet.h"
 #include "Map.h"
+#include "Enemy.h"
 
 using namespace sf;
 using namespace std;
@@ -20,14 +20,7 @@ int main() {
 	Map map("Assets/Map/Tilessheet-mario.png");
 
 	Player player;
-
-	// Bullets are just for learnig , not very well created here 
-	Texture bulletTexture;
-	if (!bulletTexture.loadFromFile("./Assets/Bullet/bullet.png")) {
-		cout << "Can't Load bullet";
-	}
-	vector<Bullet> bullets;
-	Clock bulletT;
+	Enemy enemy;
 
 	RenderWindow window(VideoMode(1216, 800), "Sprite Testing");
 
@@ -36,46 +29,49 @@ int main() {
 	// ============= Event Loop : =================================
 
 	while (window.isOpen()) {
+
 		float delta = clock.restart().asSeconds();
 		Event event;
+		enemy.create();
 
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::D)) player.moveRight(delta); // Right
 
+		if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right)) 
+			player.moveRight(delta); // Right
 
-		if (Keyboard::isKeyPressed(Keyboard::A)) player.moveLeft(delta); // Left
+		if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))
+			player.moveLeft(delta); // Left
 		
-
-		if ((Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && !player.jumpEnd) player.jump(delta); // Jump 
-		else player.gravity(delta);
+		if ((Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Space)) && !player.jumpEnd) 
+			player.jump(delta); // Jump 
+		else 
+			player.gravity(delta);
 		
 		if (noKeyPressed()) {
 			player.stop();
 			player.gravity(delta);
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::LShift) || Keyboard::isKeyPressed(Keyboard::RShift)) {
-			if (bulletT.getElapsedTime().asMilliseconds() >= 100)
-			{
-				bullets.push_back(Bullet(bulletTexture, player.getPosition()));
-				bulletT.restart();
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+			sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+			player.fire(mousePos);
+		}
+
+		for (int i = 0; i<enemy.enemies.size() ; i++ ){
+			Sprite& enm = enemy.enemies.at(i);
+			if (player.checkCollide(enm)) {
+				enemy.enemies.erase(enemy.enemies.begin()+i);
 			}
 		}
 
 		window.clear(sf::Color(213, 255, 255));
 		map.renderMap(window);
-
-		player.draw(window);
-
-		for (Bullet& bullet : bullets) {
-			bullet.animate(delta);
-			bullet.draw(window);
-		}
-
+		enemy.draw(window);
+		player.draw(window , delta);
 		window.display();
 	}
 

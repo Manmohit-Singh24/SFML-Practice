@@ -1,2 +1,6 @@
-﻿  main.cpp
+﻿  Enemy.cpp
+C:\Users\HP\OneDrive\Code\C++\Practice_Games\SFML_Learn\Enemy.cpp(19,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\OneDrive\Code\C++\Practice_Games\SFML_Learn\Enemy.cpp(20,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
   SFML_Learn.vcxproj -> C:\Users\HP\OneDrive\Code\C++\Practice_Games\x64\Debug\SFML_Learn.exe
